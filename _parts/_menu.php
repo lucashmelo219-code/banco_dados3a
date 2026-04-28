@@ -1,15 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" >
-    <title>Index - PHP</title>
-
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-dark fixed-top">
+   <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Personal PRO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -23,13 +12,10 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link "  href="index.php">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="gmuscular.php">Grupo Muscular</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Exercício</a>
+            <a class="nav-link" href="exercicios.php">Exercícios</a>
           </li>
         </ul>
         <form class="d-flex mt-3" role="search">
@@ -40,14 +26,3 @@
     </div>
   </div>
 </nav>  
-
-     <main class="container">
-        <div class="mt-5 d-flex justify-content-between p-5 ">
-            <h3 class>Grupos Musculares</h3>
-            <a href="" class="btn btn-success">Novo Grupo Muscular</a>
-        </div>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

@@ -14,7 +14,7 @@ final class Database {
                 $dns= "pgsql:host={$config['host']};port={$config['port']};dbname={$config['data']};charset=utf8";
             }
             else{
-                throw new Exception("Driver de banco de dados não suportado" . $config["driver"]."");
+                throw new Exception("Driver de banco de dados não suportado" .$config["driver"]."");
                 
             }
             $this->connection = new PDO($dns, $config["user"], $config["pass"]);
