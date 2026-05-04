@@ -25,7 +25,7 @@
 
      <main class="container">
         <div class="mt-5 d-flex justify-content-between p-5 ">
-            <h3 class>Exercícios</h3>
+            <h3>Exercícios</h3>  <!-- Nota: Removido atributo 'class' vazio para corrigir erro de sintaxe HTML. -->
             <a href="ger-exercicio.php" class="btn btn-success">Novo Exercício</a>
         </div>
         <div>
@@ -48,10 +48,12 @@
               ?>
               <tr>
                 <td class="text-center">1</td>
-                <td><?php echo $exerc->getNome(); ?></td>
+                <td><?php echo $exerc->nome; ?></td> <!-- Nota: Alterado de $exerc->getNome() para $exerc->nome, pois o método all() retorna stdClass com propriedades públicas (não métodos). Assumindo coluna 'nome' no banco. -->
+               
+                
                 <td  class="text-center">
-                  <a href="#" class="btn btn-success"> <i class="bi bi-eye-fill"></i> </a>
-                  <a href="#" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                  <a href="#" class="btn btn-info"> <i class="bi bi-eye-fill"></i> </a>
+                  <a href="#" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                   <a href="#" class="btn btn-danger"><i class="bi bi-trash3-fill"></i>  </a>
                 </td>
               </tr>

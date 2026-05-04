@@ -5,7 +5,7 @@ abstract class CRUD {
     protected $db;
 
     public function __construct() {
-        $this->db =Database::getInstance()->getConnection();
+        $this->db = Database::getInstance()-> getConnection();
 
     }
     // o método abstrato não é instanciado na classe que está

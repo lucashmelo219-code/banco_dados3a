@@ -7,7 +7,7 @@ final class Database {
         try {
             $config=parse_ini_file(__DIR__."/../config.ini",true)["database"];
             $dns= "";
-            if($config["driver"]=== "myslq") {
+            if($config["driver"]=== "mysql") {
                 $dns= "mysql:host={$config['host']};port={$config['port']};dbname={$config['data']};charset=utf8";
             }
             elseif($config["driver"]=== "pgsql") {
@@ -15,6 +15,7 @@ final class Database {
             }
             else{
                 throw new Exception("Driver de banco de dados não suportado" .$config["driver"]."");
+
                 
             }
             $this->connection = new PDO($dns, $config["user"], $config["pass"]);
