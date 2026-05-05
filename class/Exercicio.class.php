@@ -1,5 +1,5 @@
 <?php
-
+// Create read update delete
 class Exercicio extends CRUD{
     protected $table = 'exercicio';
 
@@ -12,6 +12,12 @@ class Exercicio extends CRUD{
     
     public function add() {
         // Implementação para adicionar um novo exercício
+        $sql = "INSERT INTO $this->table (nome, descricao, grupo_muscular) VALUES (:nome, :descricao, :grupoMuscular)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":nome", $this->nome, PDO::PARAM_STR);
+        $stmt->bindParam(":descricao", $this->descricao, PDO::PARAM_STR);
+        $stmt->bindParam(":grupoMuscular", $this->grupoMuscular, PDO::PARAM_STR);
+        return $stmt->execute();
     }
 
     public function update() {

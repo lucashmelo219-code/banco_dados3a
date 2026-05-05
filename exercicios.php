@@ -29,7 +29,10 @@
             <a href="ger-exercicio.php" class="btn btn-success">Novo Exercício</a>
         </div>
         <div>
-          <table class="table table-dark table-striped">
+          <div class="mb-3">
+            <input type="text" name="campo-filtro" id="campo-filtro" class="form-control" placeholder="🔎 Digite para filtrar" title="Digite para filtar pelo nome do exercício">
+          </div>
+          <table id="tabela-exercicios" class="table table-dark table-striped">
             <thead>
               <tr>
                 <th class="text-center">#</th>
@@ -47,8 +50,8 @@
 
               ?>
               <tr>
-                <td class="text-center">1</td>
-                <td><?php echo $exerc->nome; ?></td> <!-- Nota: Alterado de $exerc->getNome() para $exerc->nome, pois o método all() retorna stdClass com propriedades públicas (não métodos). Assumindo coluna 'nome' no banco. -->
+                <td class="text-center"><?= $exerc->idexercicio ?></td>
+                <td><?php echo $exerc->nome; ?></td> 
                
                 
                 <td  class="text-center">
@@ -64,5 +67,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/tb-interativa.js"></script>
+    <script src="js/exercícios.js"></script>
 </body>
 </html>
