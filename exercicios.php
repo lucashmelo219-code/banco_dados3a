@@ -43,26 +43,29 @@
               </tr>
             </thead>
             <tbody>
+
               <?php 
               foreach ($exercicios as $exerc):
-
-
-
               ?>
+
               <tr>
                 <td class="text-center"><?= $exerc->idexercicio ?></td>
                 <td><?php echo $exerc->nome; ?></td> 
+
                
                 
                 <td  class="text-center">
                   <a href="#" class="btn btn-info"> <i class="bi bi-eye-fill"></i> </a>
-                  <a href="#" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                  <a href="ger-exercicio.php?id=<?= $exerc->idexercicio ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                   <a href="#" class="btn btn-danger"><i class="bi bi-trash3-fill"></i>  </a>
                 </td>
               </tr>
               <?php endforeach ?>
             </tbody>
           </table>
+          <div id="msg-vazio" class="d-flex justify-content-center alert alert-info p-3 d-none">
+      <i class="bi bi-info-circle mx-2"></i> Nenhum exercício encontrado para o filtro digitado.
+    </div>  
         </div>
     </main>
 

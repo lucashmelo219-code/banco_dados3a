@@ -11,9 +11,15 @@
 <body>
      <?php require_once '_parts/_menu.php';
      $gruposMusculares = [' Peito', 'Costas', 'Pernas', 'Braços', 'Ombros', 'Abdômen', 'Glúteos', 'Panturrilhas', 'Trapézio', 'Antebraços', 'Quadríceps', 'Adutores', 'Abdutores', 'Lombar', 'Deltoides Anteriores', 'Deltoides Laterais', 'Deltoides Posteriores'];
+     
       spl_autoload_register(function($class){
         require_once "class/{$class}.class.php";
      });
+     if (filter_has_var(INPUT_GET,"id")) {
+        $edtExec = new Exercicio();
+        $id = intval(filter_input(INPUT_GET,"id"));
+        $exercicio = $edtExec->search('idexercicio', $id);
+      }
      ?>
       <!-- existem 2 metodos de envio de formulario, get e post --- trabalhamos aqui o post -->
      <main class="container" style="margin-top: 80px;">
@@ -24,25 +30,40 @@
 
         <div class="card">
           <form action="db-exercicio.php" method="post" class="row g3 mt-3 p-3">
+
+             <input type="hidden" name="id" value="<?= $id ?? null?>">
             <div class="col-12">
               <label for="nome" class="form-label">Nome do Exercício</label>
-              <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do exercício" required>
+              <input type="text" class="form-control" id="nome" name="nome"  required value="<?= $exercicio->nome ?? null;?>">
             </div>
 
 
             <div class="col-12">
               <label for="descricao">Descrição</label>
-              <textarea name="descricao" id="descricao" class="form-control" ></textarea>
+              <textarea name="descricao" id="descricao" class="form-control" ><?= $exercicio->descricao ?? null;?></textarea>
             </div>
 
             <div class="col-md-6">
               <label for="grupoMuscular">Grupo Muscular</label>
+
+              <?php
+              $grupo_sel = $exercicio->grupo_muscular ?? null;
+              ?>
+
               <select name="grupoMuscular" id="grupoMuscular" class="form-select">
                 <option value="">Selecione o grupo muscular</option>
-                <?php foreach($gruposMusculares as $grupo): ?>
-                  <option value="<?php echo $grupo; ?>"><?php echo $grupo; ?></option>
-                <?php endforeach; ?>
+
+                   <?php foreach($gruposMusculares as $grupo):?>
+                  <option value="<?= $grupo ?>"
+                  <?php
+                  if ($grupo == $grupo_sel) echo'selected';
+                  ?>
+                  >
+                    <?= $grupo ?>
+                  </option>
+                <?php endforeach;?>  
               </select>
+
             </div>
 
 

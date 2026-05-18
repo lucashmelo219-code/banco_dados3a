@@ -9,14 +9,10 @@ final class Database {
             $dns= "";
             if($config["driver"]=== "mysql") {
                 $dns= "mysql:host={$config['host']};port={$config['port']};dbname={$config['data']};charset=utf8";
-            }
-            elseif($config["driver"]=== "pgsql") {
+            }elseif($config["driver"]=== "pgsql") {
                 $dns= "pgsql:host={$config['host']};port={$config['port']};dbname={$config['data']};charset=utf8";
-            }
-            else{
-                throw new Exception("Driver de banco de dados não suportado" .$config["driver"]."");
-
-                
+            }else{
+                throw new Exception("Driver de banco de dados não suportado" .$config["driver"]."");    
             }
             $this->connection = new PDO($dns, $config["user"], $config["pass"]);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -1,6 +1,6 @@
 <?php
 
-abstract class CRUD {
+abstract class CRUD{
     protected $table;
     protected $db;
 
@@ -19,5 +19,13 @@ abstract class CRUD {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
 
     }
+    public function search(string $campo, int $id){
+        $sql = "SELECT * FROM $this->table WHERE $campo = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_OBJ) : null;
+    }
     
-}
+}       
