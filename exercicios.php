@@ -15,8 +15,10 @@
      spl_autoload_register(function($class){
         require_once "class/{$class}.class.php";
      });
-
+     
      $exercicio = new Exercicio();
+
+     
 
     $exercicios = $exercicio->all();
      
@@ -54,10 +56,17 @@
 
                
                 
-                <td  class="text-center">
+                <td  class="d-flex gap-1 justify-content-center">
                   <a href="#" class="btn btn-info"> <i class="bi bi-eye-fill"></i> </a>
                   <a href="ger-exercicio.php?id=<?= $exerc->idexercicio ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                  <a href="#" class="btn btn-danger"><i class="bi bi-trash3-fill"></i>  </a>
+                  <form action="db-exercicio.php" method="post">
+                    <input type="hidden" name="id" value="<?= $exerc->idexercicio ?>">
+                   <button type="submit" class="btn btn-danger" name="btn-deletar" onclick="return confirm('Tem certeza que deseja deletar o exercicio?');">
+                    <i class="bi bi-trash3-fill"></i>
+                   </button> 
+                  </form>
+                
+                 
                 </td>
               </tr>
               <?php endforeach ?>

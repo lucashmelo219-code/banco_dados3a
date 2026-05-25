@@ -29,16 +29,18 @@ class TabelaInterativa{
         const linhas = this.#corpoTabela.querySelectorAll('tr');
 
         linhas.forEach((linha)=>{
-            let texto = linha.textContent.toLowerCase();
-            if(texto.includes(termo)){
+            let text = linha.textContent.toLowerCase();
+            
+            if(text.includes(termo)){
                 linha.classList.remove('d-none');
             }else{
                 linha.classList.add('d-none');
             }
         });
 
-        const visiveis = this.#corpoTabela.querySelectorAll('tr:not(.d-done)');
+        const visiveis = this.#corpoTabela.querySelectorAll('tr:not(.d-none)');
         console.log(visiveis);
-        this.#msgVazio.classList.toggle('d-none',visiveis.length > 0);
+        this.#msgVazio.classList.toggle('d-none', visiveis.length>0);
     }
+    
 }   

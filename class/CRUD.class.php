@@ -27,5 +27,11 @@ abstract class CRUD{
 
         return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_OBJ) : null;
     }
-    
+    #Construi o método de excluir um registro
+    public function delete(string $campo, int $id){
+        $sql = "DELETE FROM $this->table WHERE $campo = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }       

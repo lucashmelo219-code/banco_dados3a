@@ -15,11 +15,17 @@ if($ex->getId() > 0) {
     if($ex->update()){
         header("Location:exercicios.php");
     }
-    else{
-  
+} else {
+    if($ex->add()){
+        header("Location:exercicios.php");
+    }
 }
-if($ex->add()){
-    header("Location:exercicios.php");
-}
-}
+
+
+}elseif(filter_has_var(INPUT_POST, "btn-deletar")){
+    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+    if($ex->delete('idexercicio', $id)){
+        header("Location:exercicios.php");
+    }
+
 }
