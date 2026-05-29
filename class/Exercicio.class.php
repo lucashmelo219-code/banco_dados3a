@@ -31,6 +31,7 @@ class Exercicio extends CRUD{
         $stmt->bindParam(":grupoMuscular", $this->grupoMuscular, PDO::PARAM_STR);
         return $stmt->execute();
     }
+    
     public function getId() {
         return $this->id;
     }

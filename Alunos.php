@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <title>Exercícios</title>
+    <title>Alunos</title>
 
 </head>
 <body>
@@ -16,29 +15,31 @@
         require_once "class/{$class}.class.php";
      });
      
-     $exercicio = new Exercicio();
+     $aluno = new Aluno();
 
      
 
-    $exercicios = $exercicio->all();
+    $alunos = $aluno->all();
      
  ?> 
 
 
      <main class="container">
         <div class="mt-5 d-flex justify-content-between p-5 ">
-            <h3>Exercícios</h3> 
-            <a href="ger-exercicio.php" class="btn btn-success">Novo Exercício</a>
+            <h3>Alunos</h3> 
+            <a href="ger-aluno.php" class="btn btn-success">Novo Aluno</a>
         </div>
         <div>
           <div class="mb-3">
-            <input type="text" name="campo-filtro" id="campo-filtro" class="form-control" placeholder="🔎 Digite para filtrar" title="Digite para filtar pelo nome do exercício">
+            <input type="text" name="campo-filtro" id="campo-filtro" class="form-control" placeholder="🔎 Digite para filtrar" title="Digite para filtar pelo nome do aluno">
           </div>
-          <table id="tabela-exercicios" class="table table-dark table-striped">
+          <table id="tabela-alunos" class="table table-dark table-striped">
             <thead>
               <tr>
                 <th class="text-center">#</th>
                 <th>Nome</th>
+                <th>Celular</th>
+                <th>Email</th>
                 <th class="text-center">Ações</th>
 
                 
@@ -47,21 +48,21 @@
             <tbody>
 
               <?php 
-              foreach ($exercicios as $exerc):
+              foreach ($alunos as $al):
               ?>
 
               <tr>
-                <td class="text-center"><?= $exerc->idexercicio ?></td>
-                <td><?php echo $exerc->nome; ?></td> 
-
-               
+                <td class="text-center"><?= $al->idaluno ?></td>
+                <td><?php echo $al->nome; ?></td> 
+                <td><?php echo $al->celular; ?></td> 
+                
                 
                 <td  class="d-flex gap-1 justify-content-center">
                   <a href="#" class="btn btn-info"> <i class="bi bi-eye-fill"></i> </a>
-                  <a href="ger-exercicio.php?id=<?= $exerc->idexercicio ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                  <form action="db-exercicio.php" method="post">
-                    <input type="hidden" name="id" value="<?= $exerc->idexercicio ?>">
-                   <button type="submit" class="btn btn-danger" name="btn-deletar" onclick="return confirm('Tem certeza que deseja deletar o exercicio?');">
+                  <a href="ger-aluno.php?id=<?= $al->idaluno ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                  <form action="db-aluno.php" method="post">
+                    <input type="hidden" name="id" value="<?= $al->idaluno ?>">
+                   <button type="submit" class="btn btn-danger" name="btn-deletar" onclick="return confirm('Tem certeza que deseja deletar o aluno?');">
                     <i class="bi bi-trash3-fill"></i>
                    </button> 
                   </form>
@@ -73,13 +74,13 @@
             </tbody>
           </table>
           <div id="msg-vazio" class="d-flex justify-content-center alert alert-info p-3 d-none">
-      <i class="bi bi-info-circle mx-2"></i> Nenhum exercício encontrado para o filtro digitado.
+      <i class="bi bi-info-circle mx-2"></i> Nenhum aluno encontrado para o filtro digitado.
     </div>  
         </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/tb-interativa.js"></script>
-    <script src="js/exercícios.js"></script>
+    <script src="js/alunos.js"></script>
 </body>
 </html>
