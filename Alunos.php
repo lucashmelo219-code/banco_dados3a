@@ -19,7 +19,7 @@
 
      
 
-    $alunos = $aluno->all();
+    $alunos = $aluno->sp_banco('sp_listar_alunos()');
      
  ?> 
 
@@ -27,7 +27,7 @@
      <main class="container">
         <div class="mt-5 d-flex justify-content-between p-5 ">
             <h3>Alunos</h3> 
-            <a href="ger-aluno.php" class="btn btn-success">Novo Aluno</a>
+            <a href="ger-aluno.php" class="btn btn-success"> Cadastrar Aluno</a>
         </div>
         <div>
           <div class="mb-3">
@@ -55,7 +55,7 @@
                 <td class="text-center"><?= $al->idaluno ?></td>
                 <td><?php echo $al->nome; ?></td> 
                 <td><?php echo $al->celular; ?></td> 
-                
+                <td><?php echo $al->email; ?></td>
                 
                 <td  class="d-flex gap-1 justify-content-center">
                   <a href="#" class="btn btn-info"> <i class="bi bi-eye-fill"></i> </a>

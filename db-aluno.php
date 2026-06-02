@@ -10,6 +10,14 @@ if (filter_has_var(INPUT_POST, "btnEnviar")) {
     $aluno->setNome(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
     $aluno->setCelular(filter_input(INPUT_POST, 'celular', FILTER_SANITIZE_STRING));
     $aluno->setEmail(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
+    $aluno->setFKUsuario(filter_input(INPUT_POST, 'fkusuario', FILTER_SANITIZE_STRING));
+    $aluno->setLogradouro(filter_input(INPUT_POST, 'logradouro', FILTER_SANITIZE_STRING));
+    $aluno->setCidade(filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_STRING));
+    $aluno->setCep(filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_STRING));
+    $aluno->setSexo(filter_input(INPUT_POST, 'Sexo', FILTER_SANITIZE_STRING));
+    $aluno->setNascimento(filter_input(INPUT_POST, 'nascimento', FILTER_SANITIZE_STRING));
+    $aluno->setEstado(filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING));
+
 
     if ($aluno->getId() > 0) {
         $aluno->update();{
@@ -20,8 +28,7 @@ if (filter_has_var(INPUT_POST, "btnEnviar")) {
         }
     }
 
-   
-   
+
 }
 
 if (filter_has_var(INPUT_POST, "btn-deletar")) {
