@@ -66,14 +66,14 @@
 <div class="col-md-2">
     <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
     <div class="input-group">
-      <button type="button" class="btn btn-outline-secondary" id="toggleSenha">
+      <button type="button" class="btn btn-outline-secondary" id="toggleConfirmarSenha">
         <i class="bi bi-eye-slash-fill"></i>
       </button>
       <input  type="password"  class="form-control"  id="confirmar_senha"  name="confirmar_senha">
     </div>
 </div>
             <div class="col-6 mt-4" >
-              <label for="Dados Pessoais" class="form-label"><strong>Dados Pessoais</strong></label>
+              <h5 class="form-label"><strong>Dados Pessoais</strong></h5>
             </div>
 
              <input type="hidden" name="id" value="<?= $id ?? null?>">
@@ -82,13 +82,7 @@
               <input type="text" class="form-control" id="nome" name="nome"  required value="<?= $aluno->nome ?? null;?>">
             </div>
 
-             <div class="col-md-6">
-             <label for="email" class="form-label">E-mail</label>
-             <div class="input-group">
-             <span class="input-group-text">@</span>
-             <input type="email" class="form-control" id="email" name="email"value="<?= $aluno->email ?? null; ?>">
-              </div>
-                </div>
+            <!-- E-mail pessoal removido (já existe campo E-mail em Dados de Acesso) -->
 
 
             <div class="col-md-6">
@@ -114,7 +108,7 @@
               </div>
 
    
-            <form class="row g-3">
+            <div class="row g-3">
 
 
   <!-- Nascimento -->
@@ -126,7 +120,7 @@
   <!-- Celular -->
   <div class="col-md-6">
     <label for="celular" class="form-label">Celular</label>
-    <input type="text" class="form-control" id="celular" name="celular" maxlength="20" value="<?= $aluno->celular ?? null; ?>">
+    <input type="text" class="form-control" id="celular" name="celular" maxlength="20" value="<?= $aluno->celular ?? null; ?>" data-mascara ="(00) 00000-0000">
   </div>
 
   <!-- Logradouro -->
@@ -156,7 +150,7 @@
   <!-- CEP -->
   <div class="col-md-5  ">
     <label for="cep" class="form-label">CEP</label>
-    <input type="text" class="form-control" id="cep" name="cep" maxlength="9" placeholder="00000-000" value="<?= $aluno->cep ?? null; ?>">
+    <input type="text" class="form-control" id="cep" name="cep" maxlength="9" placeholder="00000-000" value="<?= $aluno->cep ?? null; ?>" data-mascara="00000-000">
   </div>
 
   <!-- Objetivo -->
@@ -167,9 +161,7 @@
 
 
   </div>
-
-</form>
-
+  </div>
 
             </div>
 
@@ -181,16 +173,13 @@
             </div>
 
           
-</select>
-
-
           </form>
 
         </div>
      </main>
 
-    
-
+  
+    <script src="js/utils.js"></script>                
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
