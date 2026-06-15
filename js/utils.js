@@ -19,4 +19,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+    //Busca o cep
+    if(campoCep) {
+        campoCep.addEventListener('blur',async()=> {
+            let cep = campoCep.value.replace(/\D/g, '');
+            if(cep.length !== 8) return;
+            try {
+                const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                const dados = await res.json();
+                if(!dados.erro) {
+                    document.querySelector('#logradouro').value = dados.logradouro ;
+                    document.querySelector('#bairro').value = dados.bairro ;
+                    document.querySelector('#cidade').value = dados.localidade ;
+                    document.querySelector('#estado').value = dados.uf ;
+                } 
+            } catch (error) {
+                console.error('Falha na requisição de endereço', erro);
+            }
+        });
+    }
+    if(senha && confirmarSenha && btnSalvar) {
+        const configurarToggleSenha = (btnId, inputId) => {
+            btn = document.querySelector(btnId);
+            if(!btn) return;
+            const input = document.querySelector(inputId);
+            const icone = btn.querySelector('i');
+            btn.addEventListener('click', () => {
+                const tipo = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', tipo);
+                icone.classList.toggle('bi-eye-slash');
+                icone.classList.toggle('bi-eye');
+                
+                
+            });
+        };
+        configurarToggleSenha('#toggleSenha', '#senha');
+        configurarToggleSenha('#toggleConfirmarSenha', '#confirmar_senha');
+
+        const validar = () => {
+            const erro = senha.value === '' || senha.value !== confirmarSenha.value;
+            confirmarSenha.style.borderColor = erro ? 'red' : 'green';
+            btnSalvar.disabled = erro;
+        };
+        senha.addEventListener('input', validar);
+        confirmarSenha.addEventListener('input', validar);
+    }
+
 });
